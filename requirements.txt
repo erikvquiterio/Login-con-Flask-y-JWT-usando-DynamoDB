@@ -1,0 +1,8 @@
+pytz
+boto3
+flask
+passlib
+shortuuid
+flask_cors
+flask-restful
+flask-jwt-extended
