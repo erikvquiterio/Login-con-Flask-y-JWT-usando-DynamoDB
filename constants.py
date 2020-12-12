@@ -1,0 +1,12 @@
+class Constant():
+    EXISTING_RECORD = 'El usuario con el correo {} ya existe'
+    THE_NON_EXISTING_USER = 'El usuario no existe, verifique sus datos'
+    RECORD_DELETED = 'El usuario {} ha sido eliminado'
+    UPDATED_RECORD = 'El usuario {} ha sido modificado'
+    RECORD_CREATED = 'El usuario {} con el correo {} ha sido creado'
+    THE_NON_EXISTING_REGISTRY = 'El usuario {} no existe'
+    REQUIRED_FIELD = 'Este campo no puede estar vacío'
+    EMPTY_FIELDS = 'Se recibió una solicitud vacía, incompleta o inválida'
+    BAD_REQUEST = 'Algo salió mal. El servidor no pudo responder'
+    WRONG_CREDENTIALS = 'El email o la contraseña son incorrectas'
+    MISSING_AUTH = 'Falta el encabezado de autorización'

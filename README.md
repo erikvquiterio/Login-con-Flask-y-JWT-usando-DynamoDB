@@ -11,10 +11,26 @@ Este proyecto te ayudará a implementar un backend con autenticación de usuario
 
 - Crea una tabla en Dynamo DB. Dirígete a *servicios de AWS > Dynamo DB > Crear tabla*. Por defecto, AWS sugiere usar la configuración predeterminada, pero debes deseleccionar esta opción y configurarla de la siguiente manera:
     ```
+    Detalles de la tabla ->
     Nombre de la tabla: Usuarios
-    Clave principal: Email
-    Auto Scaling: Deseleccionar capacidad de lectura y escritura 
-    Capacidad aprovisionada (en unidades): Capacidad de lectura 1 | Capacidad de escritura  1 
+    Clave de partición: Id , Tipo: Cadena
+    
+    Configuración -> 
+    Personalizar configuración
+
+    Configuración de capacidad de lectura/escritura ->
+    Modo de capacidad: Aprovisionado
+
+    Capacidad de lectura ->
+    Auto Scaling: Desactivado, Unidades de capacidad aprovisionadas: 1
+
+    Capacidad de escritura ->
+    Auto Scaling: Desactivado | Unidades de capacidad aprovisionadas: 1
+
+    Crear índice global ->
+    Clave de partición : Email, Tipo: Cadena
+    Nombre de índice : Email-Index
+    Proyecciones de atributos: All
     ```
 
 - Configura las credenciales:
@@ -46,7 +62,6 @@ Listo, están configurados los accesos para AWS. Si quieres obtener más informa
   ```
 
 
-
 ## Iniciando
 - Clona el repositorio
     
@@ -66,8 +81,9 @@ Existe solo un recurso en este proyecto, los usuarios. En las siguiente tabla ve
 
 |Verbo|Ruta|Auth|Body|
 |----|--------------------|-----------------|----------------------------------------------------------------------------------------|
-|POST|api/v1/auth/login|No|```{"email": "info@proyecto-teos.com","username": "TEOS","password": "$QWE098$","name": "proyecto TEOS"}```|
-|POST|api/v1/auth/signup|No|```{"email": "info@proyecto-teos.com","password": "$QWE098$"}```|
+|POST|api/v1/auth/login|No|```{"email": "info@proyecto-teos.com","password": "$QWE098$"}```|
+|POST|api/v1/auth/signup|No|```{"email": "info@proyecto-teos.com","username": "TEOS","password": "$QWE098$","name": "proyecto TEOS"}```|
+|POST|api/v1/auth/whoami|Si (token)|
 |POST|api/v1/token/refresh|Si(refreshToken)||
 |GET|api/v1/users/|Si(token o accessToken)||
 |GET|api/v1/user/:id|Si(token o accessToken)||
